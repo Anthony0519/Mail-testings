@@ -35,7 +35,7 @@ exports.subscribe = async (req,res)=>{
         const token = jwt.sign({email},process.env.jwt_secret,{expiresIn:"5mins"})
 
         // verify the users email
-        const link = `${req.protocol}://${req.get("host")}/api/comfirm/${token}`
+        const link = `https://mail-testing-api.vercel.app/api/comfirm/${token}`
         // const html = DynamicEmail(link,user.firstName,user.lastName.slice(0,1).toUpperCase())
         
         sendEmail({
