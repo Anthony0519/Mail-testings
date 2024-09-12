@@ -71,7 +71,7 @@ exports.comfirmsubscription = async (req,res)=>{
         }
 
         // extract the user's id from the token
-        const decodeToken = jwt.verify(token,process.env.jwtKey)
+        const decodeToken = jwt.verify(token,process.env.jwt_secret)
 
         // extract the user's id
         const email = decodeToken.email
@@ -84,16 +84,17 @@ exports.comfirmsubscription = async (req,res)=>{
             })
         }
 
-        
+        // check if the user is already verified
+        if(user.comfirm === true){
+            return res.redirect("https://furniro-iota-eight.vercel.app/#/newsletter-success")
+        }
+       
         // find by id and verify
         await subModel.updateOne({email},{$set: {comfirm:true}})
 
         res.redirect("https://furniro-iota-eight.vercel.app/#/newsletter-success")
         
-        // check if the user is already verified
-        if(user.comfirm === true){
-            return res.redirect("https://furniro-iota-eight.vercel.app/#/newsletter-success")
-        }
+        
         // res.status(200).json({
         //     message: "you have been verified",
         // })
