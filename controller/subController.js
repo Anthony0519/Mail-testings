@@ -35,7 +35,7 @@ exports.subscribe = async (req,res)=>{
         const token = jwt.sign({email},process.env.jwt_secret,{expiresIn:"5mins"})
 
         // verify the users email
-        const link = `https://funiro-funiture.onrender.com/comfirm/${token}`
+        const link = `https://mail-testing-amber.vercel.app/api/comfirm/${token}`
         // const html = DynamicEmail(link,user.firstName,user.lastName.slice(0,1).toUpperCase())
         
         sendEmail({
