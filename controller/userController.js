@@ -116,7 +116,7 @@ exports.verifyUser = async (req,res)=>{
         }
 
         // extract the user's id from the token
-        const decodeToken = jwt.verify(token,process.env.jwtKey)
+        const decodeToken = jwt.verify(token,process.env.jwt_secret)
 
         // extract the user's id
         const ID = decodeToken.userId

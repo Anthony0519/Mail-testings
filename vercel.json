@@ -1,6 +1,6 @@
 
 {
-    "name": "mail-testing-api",
+    "name": "mail-testing",
     "builds": [
       {
         "src": "server.js",
@@ -9,7 +9,7 @@
     ],
     "headers": [
       {
-        "source": "/api(.*)",
+        "source": "(.*)",
         "headers": [
           {
             "key": "Access-Control-Allow-Origin",
